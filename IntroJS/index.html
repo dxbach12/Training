@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+      crossorigin="anonymous"></script>
+      <script>
+        
+        let introductionStr = 'Introduction to JavaScript';
+        console.log(typeof introductionStr); 
+        introductionStr = 1234;
+        console.log(typeof introductionStr);
+        introductionStr = true;
+        console.log(typeof introductionStr);
+        var variable2 = null;
+        console.log(variable2);
+        console.log(typeof variable2);
+        function displayHeading(){     
+          document.getElementById('firstPara').innerHTML= introductionStr;
+        }
+
+        var earningsTotal = 0.0;
+
+        function calculateTotal(){
+          var dayEarningStr = document.getElementById('dayEarning').value;
+          earningsTotal = earningsTotal + parseFloat(dayEarningStr);
+          if(earningsTotal > 100 && earningsTotal < 200){
+            document.getElementById('earningsTotal').innerHTML = 'Wow!!! You earned ' + earningsTotal;
+          }
+          else if (earningsTotal === 100){
+            document.getElementById('earningsTotal').innerHTML = 'You rock!!! You earned ' + earningsTotal;
+          }
+          else{
+            document.getElementById('earningsTotal').innerHTML = 'Sorry, you only earned ' + earningsTotal;
+          }
+        }
+        function resetEarning(){
+          earningsTotal = 0.0;
+          document.getElementById('earningsTotal').innerHTML = 'Total is now 0';
+        }
+        var earningsTotalJQ = 0.0;
+        $('#calculateEarningBtnJQ').on('click', function(event)
+        {
+          var dayEarningStr = document.getElementById('dayEarning').value;
+          earningsTotal = earningsTotal + parseFloat(dayEarningStr);
+          if(earningsTotal > 100 && earningsTotal < 200){
+            document.getElementById('earningsTotal').innerHTML = 'Wow!!! You earned ' + earningsTotal;
+          }
+          else if (earningsTotal === 100){
+            document.getElementById('earningsTotal').innerHTML = 'You rock!!! You earned ' + earningsTotal;
+          }
+          else{
+            document.getElementById('earningsTotal').innerHTML = 'Sorry, you only earned ' + earningsTotal;
+          }
+        
+        });
+
+        var cupsCount = 0;
+
+        function coffeeCount (){
+          cupsCount += 1;
+          if (cupsCount < 3){
+            console.log("Yes I'll take another cup of coffee. I've had " + cupsCount + " cups so far.");
+            }
+            else{
+            console.log("I think I'm okay for now. I've already had " + cupsCount + " cups.")
+          }
+          }
+
+          function absorbCoffee (){
+          cupsCount -= 1;
+            console.log("I've absorbed a cup. I've had " + cupsCount + " cups so far.");
+          }
+        var temperature = 80;
+        var precipitation = false;
+        var indoor = true;
+          function outputTemp (){
+            document.getElementById('temperature').innerHTML = "Current temperature is " + temperature;
+          }
+
+          function tempCheck (){
+            temperature = document.getElementById('temperature').value;
+            if (temperature > 80){
+              document.getElementById('temperature').innerHTML = "Time to swim! It's now " + temperature + " degrees!";
+            }
+            else {
+              document.getElementById('temperature').innerHTML = "Not the time to swim! It's now " + temperature + " degrees!";
+            }
+          }
+
+          var studentsListJQuery = [];
+          var iJQuery = 0;
+          function addStudentJQuery(){
+              var stuNm = $('#studentsNameJQuery').val();
+              studentsListJQuery[iJQuery] = stuNm;
+              iJQuery++;
+          }
+
+          function showStudentsJQuery(){
+            var ulElement = $('#studentsListJQuery');
+            ulElement.innerHTML = '';
+            for (let index = 0; index < iJQuery; index++){
+              //var liElement = $("li");
+              //liElement.innerHTML = studentsListJQuery[index];
+              ulElement.append("<li>" + studentsListJQuery[index] + "<li>");
+            }
+          }
+          for (let index = 99; index >= 0; index--){
+            console.log(index + " bottles of root beer on the wall\n")
+          }
+          console.log("Hey! We need more root beer!")
+      </script>
+ 
+  </head>
+
+  <body>
+    <h2 id="firstPara"></h2>
+    <button onclick="displayHeading()">Click Me
+    </button>
+    <h3 id="secondHead"></h3>
+    <script>
+      document.getElementById('secondHead').innerHTML= introductionStr;
+    </script>
+    Today's earning : <input id="dayEarningJQ"></input>
+    <button id="calculateEarningBtnJQ">Calculate Earning</button>
+    <button id="resetEarningBtn" onclick = "resetEarning()">Reset Earning</button>
+    <p id="earningsTotal"></p>
+
+    <button id="drinkCoffee" onclick = "coffeeCount()">Drink a cup of coffee</button>
+    <button id="absorbCoffee" onclick = "absorbCoffee()">Absorb a cup of coffee</button>
+
+    Temperature now : <input id="temperature"></input>
+    <button id="setTemp" onclick = "tempCheck()">Set Temperature</button>
+    
+    Student Name : <input id="studentsNameJQuery"></input>
+    <button onclick="addStudentJQuery()">Add Student</button>
+    <button onclick="showStudentsJQuery()">Show Students</button>
+    <ul id="studentsListJQuery">
+
+    </ul>
+  </body>
+</html>
